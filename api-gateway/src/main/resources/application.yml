@@ -1,0 +1,33 @@
+server:
+  port: 8181
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      routes:
+        - id: a-service
+          uri: lb://A-SERVICE
+          predicates:
+            - Path=/a/**
+#          filters:
+#            - AuthenticationFilter
+
+        - id: b-service
+          uri: lb://B-SERVICE
+          predicates:
+            - Path=/b/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
