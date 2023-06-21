@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
+
 /**
  * Created by Intellij.
  * Author: Abhishek Peiris
@@ -13,7 +15,7 @@ import org.springframework.stereotype.Service;
  * Time: 08:51
  */
 @Service
-public class AuthService {
+public class AuthService implements Serializable {
 
     @Autowired
     UserCredentialRepository userCredentialRepository;

@@ -32,7 +32,9 @@ public class AuthController {
 
     @PostMapping("/token")
     public String getToken(@RequestBody AuthRequest authRequest) {
+        System.out.println(authRequest.toString());
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+        System.out.println(authenticate.isAuthenticated());
         if (authenticate.isAuthenticated()) {
             return service.generateToken(authRequest.getUsername());
         } else {
@@ -42,6 +44,7 @@ public class AuthController {
 
     @GetMapping("/validate")
     public String validateToken(@RequestParam("token") String token) {
+        System.out.println("Called");
         service.validateToken(token);
         return "Token is valid";
     }

@@ -20,6 +20,11 @@ spring:
           predicates:
             - Path=/b/**
 
+        - id: identity-service
+          uri: lb://IDENTITY-SERVICE
+          predicates:
+            - Path=/auth/**
+
 management:
   endpoints:
     web:
